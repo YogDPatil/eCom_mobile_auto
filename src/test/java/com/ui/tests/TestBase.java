@@ -11,6 +11,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import com.ui.pages.LanguagePage;
+
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -20,6 +22,7 @@ public abstract class TestBase {
 	private DesiredCapabilities caps;
 	protected AndroidDriver androidDriver;
 	private AppiumDriverLocalService service;
+	protected LanguagePage languagePage;
 
 	@BeforeMethod(alwaysRun = true)
 	public void intialiseAppiumServer() {
@@ -37,16 +40,17 @@ public abstract class TestBase {
 		} catch (MalformedURLException | URISyntaxException e) {
 			e.printStackTrace();
 		}
-
+		languagePage = new LanguagePage(androidDriver);
+		
 		// Start the main activity explicitly (not usually needed if app already opens
 		// to this)
 //	    Map<String, Object> args = new HashMap<>();
 //	    args.put("appPackage", "com.meesho.supply");
 //	    args.put("appActivity", "com.meesho.supply.main.HomeActivity");
 //	    androidDriver.executeScript("mobile: startActivity", args);
-		
+
 	}
-	
+
 	@AfterMethod
 	public void tearDown() {
 		try {

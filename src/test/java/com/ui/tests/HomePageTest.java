@@ -7,10 +7,8 @@ import io.appium.java_client.android.Activity;
 public final class HomePageTest extends TestBase {
 
 	@Test
-	public void validateTest() {
-
-		languagePage.verifyUserIsOnHomePage();
-
+	public void validateUserNavigatesToProductsPage() {
+		startPage.verifyUserNavigatesToProductsPage();
 	}
 
 }

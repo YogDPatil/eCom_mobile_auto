@@ -31,8 +31,12 @@ public abstract class AndroidUtils {
 		((JavascriptExecutor) driver).executeScript("mobile: clickGesture", ImmutableMap.of("elementId",
 				((RemoteWebElement) wait.until(ExpectedConditions.elementToBeClickable(locator))).getId()));
 	}
-	
+
 	public WebElement findMobileElement(By locator) {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
+	public void enterText(By locator, String text) {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).sendKeys(text);
 	}
 }

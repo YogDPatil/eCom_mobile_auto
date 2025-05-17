@@ -12,6 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import com.ui.pages.LanguagePage;
+import com.ui.pages.StartPage;
 
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
@@ -22,7 +23,7 @@ public abstract class TestBase {
 	private DesiredCapabilities caps;
 	protected AndroidDriver androidDriver;
 	private AppiumDriverLocalService service;
-	protected LanguagePage languagePage;
+	protected StartPage startPage;
 
 	@BeforeMethod(alwaysRun = true)
 	public void intialiseAppiumServer() {
@@ -30,7 +31,7 @@ public abstract class TestBase {
 		caps = new DesiredCapabilities();
 		caps.setCapability("platformName", "Android");
 		caps.setCapability("automationName", "UiAutomator2");
-		caps.setCapability("app", System.getProperty("user.dir") + "/src/test/resources/testing_app/meesho.apk");
+		caps.setCapability("app", System.getProperty("user.dir") + "/src/test/resources/testing_app/General-Store.apk");
 		service = new AppiumServiceBuilder()
 				.withAppiumJS(new File("/usr/local/lib/node_modules/appium/build/lib/main.js"))
 				.withIPAddress("127.0.0.1").usingPort(4723).withEnvironment(env).build();
@@ -40,8 +41,8 @@ public abstract class TestBase {
 		} catch (MalformedURLException | URISyntaxException e) {
 			e.printStackTrace();
 		}
-		languagePage = new LanguagePage(androidDriver);
-		
+		startPage = new StartPage(androidDriver);
+
 		// Start the main activity explicitly (not usually needed if app already opens
 		// to this)
 //	    Map<String, Object> args = new HashMap<>();

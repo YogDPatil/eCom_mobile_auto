@@ -12,4 +12,9 @@ public final class ProductsPageTest extends TestBase {
 		Assert.assertEquals(startPage.goToProductsPage().getProductPageTitle(), "Products");
 	}
 
+	@Test
+	public void validateUserCandAddsProductToCart() {
+		startPage.goToProductsPage().verifyUserAddsProductToCart("PG 3");
+	}
+
 }

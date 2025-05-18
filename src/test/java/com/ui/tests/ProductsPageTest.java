@@ -1,14 +1,15 @@
 package com.ui.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import io.appium.java_client.android.Activity;
 
-public final class HomePageTest extends TestBase {
+public final class ProductsPageTest extends TestBase {
 
 	@Test
 	public void validateUserNavigatesToProductsPage() {
-		startPage.verifyUserNavigatesToProductsPage();
+		Assert.assertEquals(startPage.goToProductsPage().getProductPageTitle(), "Products");
 	}
 
 }

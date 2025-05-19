@@ -70,4 +70,22 @@ public abstract class AndroidUtils {
 			}
 		}
 	}
+
+	public void scrollUptoTheBottomOfPage() {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		boolean canScrollMore;
+		do {
+			canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture", ImmutableMap
+					.of( "left", 100,
+			                "top", 100,
+			                "width", 200, 
+			                "height", 900,
+			                "direction", "down",
+			                "percent", 3.0));
+		} while (canScrollMore);
+	}
 }

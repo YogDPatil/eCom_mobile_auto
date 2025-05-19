@@ -40,13 +40,17 @@ public final class ProductsPage extends AndroidUtils {
 		return new CartPage(driver);
 	}
 
-	public CartPage userAddsMultipleProducts(String text) {
+	public CartPage userAddsMultipleProductsInCart(String text) {
 		scrollingUptoElement(text);
 		for (int i = 0; i < findListOfMobileElement(PRODUCT_NAMES_LIST_LOCATOR).size(); i++) {
 			findListOfMobileElement(ADD_TO_CART_BUTTON_LIST_LOCATOR_By_Text).get(0).click();
 		}
 		clickOnGesture(CART_ICON_LOCATOR);
 		return new CartPage(driver);
+	}
+
+	public void scrollToTheEnd() {
+		scrollUptoTheBottomOfPage();
 	}
 
 }

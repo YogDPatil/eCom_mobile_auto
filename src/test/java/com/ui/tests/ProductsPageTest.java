@@ -19,7 +19,7 @@ public final class ProductsPageTest extends TestBase {
 
 	@Test
 	public void validateTotalAmountOfProductsInCart() {
-		startPage.goToProductsPage().userAddsMultipleProducts("PG 3");
+		startPage.goToProductsPage().scrollToTheEnd();
 	}
 
 }

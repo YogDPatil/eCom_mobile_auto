@@ -14,7 +14,7 @@ public final class ProductsPageTest extends TestBase {
 
 	@Test
 	public void validateUserCandAddsProductToCart() {
-		startPage.goToProductsPage().verifyUserAddsProductToCart("PG 3");
+		Assert.assertEquals(startPage.goToProductsPage().userAddsProductToCart("PG 3").getItemFromCart(), "PG 3");
 	}
 
 }

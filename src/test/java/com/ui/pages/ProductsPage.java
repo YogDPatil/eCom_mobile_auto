@@ -17,6 +17,8 @@ public final class ProductsPage extends AndroidUtils {
 	private static final By ADD_TO_CART_BUTTON_LIST_LOCATOR = AppiumBy
 			.id("com.androidsample.generalstore:id/productAddCart");
 	private static final By CART_ICON_LOCATOR = AppiumBy.id("com.androidsample.generalstore:id/appbar_btn_cart");
+	private static final By ADD_TO_CART_BUTTON_LIST_LOCATOR_By_Text = AppiumBy
+			.xpath("//android.widget.TextView[@text='ADD TO CART']");
 
 	public ProductsPage(AndroidDriver driver) {
 		super(driver);
@@ -33,6 +35,15 @@ public final class ProductsPage extends AndroidUtils {
 			if (findListOfMobileElement(PRODUCT_NAMES_LIST_LOCATOR).get(i).getText().equals(text)) {
 				findListOfMobileElement(ADD_TO_CART_BUTTON_LIST_LOCATOR).get(i).click();
 			}
+		}
+		clickOnGesture(CART_ICON_LOCATOR);
+		return new CartPage(driver);
+	}
+
+	public CartPage userAddsMultipleProducts(String text) {
+		scrollingUptoElement(text);
+		for (int i = 0; i < findListOfMobileElement(PRODUCT_NAMES_LIST_LOCATOR).size(); i++) {
+			findListOfMobileElement(ADD_TO_CART_BUTTON_LIST_LOCATOR_By_Text).get(0).click();
 		}
 		clickOnGesture(CART_ICON_LOCATOR);
 		return new CartPage(driver);

@@ -17,4 +17,9 @@ public final class ProductsPageTest extends TestBase {
 		Assert.assertEquals(startPage.goToProductsPage().userAddsProductToCart("PG 3").getItemFromCart(), "PG 3");
 	}
 
+	@Test
+	public void validateTotalAmountOfProductsInCart() {
+		startPage.goToProductsPage().userAddsMultipleProducts("PG 3");
+	}
+
 }

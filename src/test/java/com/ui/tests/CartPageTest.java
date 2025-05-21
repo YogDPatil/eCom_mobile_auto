@@ -15,4 +15,9 @@ public final class CartPageTest extends TestBase {
 		Assert.assertEquals(cartPage.getTotalPriceOfCartItems(), cartPage.sumOfAddedItemPrice());
 	}
 
+	@Test
+	public void validateUserNavigatesToWebPageAndHitUrl() {
+		startPage.goToProductsPage().userAddsProductToCart("PG 3").userNavigatesToWebAndHitUrl();
+	}
+
 }

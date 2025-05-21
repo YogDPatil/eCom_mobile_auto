@@ -1,6 +1,6 @@
 package com.ui.tests;
 
-import java.io.File; 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -14,6 +14,7 @@ import com.ui.pages.StartPage;
 
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 
@@ -22,6 +23,7 @@ public abstract class TestBase {
 	protected AndroidDriver androidDriver;
 	private AppiumDriverLocalService service;
 	protected StartPage startPage;
+	private UiAutomator2Options opt;
 
 	@BeforeMethod(alwaysRun = true)
 	public void intialiseAppiumServer() {
@@ -30,10 +32,19 @@ public abstract class TestBase {
 		caps.setCapability("platformName", "Android");
 		caps.setCapability("automationName", "UiAutomator2");
 		caps.setCapability("app", System.getProperty("user.dir") + "/src/test/resources/testing_app/General-Store.apk");
+		caps.setCapability("chromedriverExecutable",
+				System.getProperty("user.dir") + "/src/test/resources/drivers/chromedriver");
+
 		service = new AppiumServiceBuilder()
 				.withAppiumJS(new File("/usr/local/lib/node_modules/appium/build/lib/main.js"))
 				.withIPAddress("127.0.0.1").usingPort(4723).withEnvironment(env).build();
 		service.start();
+
+//		UiAutomator2Options opt = new UiAutomator2Options();
+//		opt.setApp(System.getProperty("user.dir") + "/src/test/resources/testing_app/General-Store.apk");
+//		opt.setDeviceName("Pixle 9");
+//		opt.setChromedriverExecutable(System.getProperty("user.dir") + "/src/test/resources/drivers/chromedriver");
+
 		try {
 			androidDriver = new AndroidDriver(new URI("http://127.0.0.1:4723").toURL(), caps);
 		} catch (MalformedURLException | URISyntaxException e) {

@@ -57,9 +57,7 @@ public final class CartPage extends AndroidUtils {
 		driver.findElement(By.name("q")).sendKeys("https://www.medscape.com/");
 		driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
 		driver.pressKey(new KeyEvent(AndroidKey.BACK));
-
 		driver.context("NATIVE_APP");
-
 	}
 
 }
